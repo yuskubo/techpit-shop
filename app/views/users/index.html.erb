@@ -1,16 +1,23 @@
-<table>
-  <thead>
-    <tr>
-      <th>名前</th>
-      <th>メールアドレス</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
-    <tr>
-      <td><%= user.name %></td>
-      <td><%= user.email %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<main role="main">
+  <div class="container">
+    <h4>登録者一覧</h4>
+    <table class="table table-bordered table-hover users">
+      <thead>
+        <tr>
+          <th scope="col">No</th>
+          <th scope="col">名前</th>
+          <th scope="col">メールアドレス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each.with_index(1) do |user, i| %>
+          <tr>
+            <th scope="row"><%= i %></th>
+            <td><%= user.name %></td>
+            <td><%= user.email %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</main>
