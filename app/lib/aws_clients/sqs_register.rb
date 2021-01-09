@@ -13,6 +13,10 @@ module AwsClients
         message_body: @body,
         message_attributes: @attributes
       })
+    rescue Aws::SQS::Errors::ServiceError => e
+      Rails.logger.error("SQS メッセージ登録でエラーが発生しました. body: #{@body}, attributes: #{@attributes}")
+      Rails.logger.error(e.message)
+      Rails.logger.error(e.backtrace.join("\n"))
     end
   end
 end
