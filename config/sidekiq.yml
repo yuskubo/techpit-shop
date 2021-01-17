@@ -1,0 +1,4 @@
+:schedule:
+  email_sender_job:
+    every: 1m
+    class: EmailSenderJob
