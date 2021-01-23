@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'home#index'
+  root 'inquiries#new'
   resources :users
   resources :inquiries
   if Rails.env.development?
