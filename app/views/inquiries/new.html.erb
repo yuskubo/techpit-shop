@@ -13,9 +13,16 @@
       <div class="col-6 bg-light">
         <%= form_with(model: @inquire) do |f| %>
           <div id="errors"></div>
-          <div class="form-group">
-            <%= f.label :name %>
-            <%= f.text_field :name, autofocus: true, class: "form-control" %>
+
+          <div class="row">
+            <div class="col">
+              <%= f.label :last_name %>
+              <%= f.text_field :last_name, autofocus: true, class: "form-control" %>
+            </div>
+            <div class="col">
+              <%= f.label :first_name %>
+              <%= f.text_field :first_name, autofocus: true, class: "form-control" %>
+            </div>
           </div>
 
           <div class="form-group">
