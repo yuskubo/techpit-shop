@@ -1,0 +1,17 @@
+ja:
+  activerecord:
+    attributes:
+      inquiry:
+        name: お名前
+        email: メールアドレス
+        agreement: 個人情報の取扱
+    errors:
+      models:
+        inquiry:
+          attributes:
+            name:
+              blank: を入力してください
+            email:
+              blank: を入力してください
+            agreement:
+              accepted: に同意が必要です

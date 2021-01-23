@@ -14,12 +14,12 @@
         <%= form_with(model: @inquire) do |f| %>
           <div id="errors"></div>
           <div class="form-group">
-            <%= f.label :name, "Name(フルネーム)"%>
+            <%= f.label :name %>
             <%= f.text_field :name, autofocus: true, class: "form-control" %>
           </div>
 
           <div class="form-group">
-            <%= f.label :email, "Email" %>
+            <%= f.label :email %>
             <%= f.email_field :email, class: "form-control" %>
           </div>
 
