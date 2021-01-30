@@ -1,16 +1,27 @@
 <main role="main">
-  <div class="container mt-5 p-lg-5">
+  <div class="container mt-3 p-lg-3">
+    <h3><small>12/20 19:00 ～ 21:00</small><br />
+    【オンライン】Ruby on Rails パフォーマンス・チューニングについて</h3>
     <div class="row">
-      <div class="col-6">
-        <h2>まずは無料レッスン！</h2>
-        <h4>マンツーマンレッスンで英語を学習できます</h4>
+      <div class="col-8">
+        <h4>速度計測の方法から実践すべきTipまでご紹介します！</h4>
+        <p>Webページの表示速度は、利用者に快適なサービスを提供するためにとても大切です。</p>
+        <p>しかしながら、利用者やデータの増加、機能の高度化などにより、様々な要因でサービスのパフォーマンスは日々劣化していきます。</p>
         <p>
-          Techpit Englishでは、科学的に効果が実証された学習法でマンツーマンレッスンを行ます。
-          また、受講スタイルや目的に合わせたさまざまなレッスンプランをご用意してますので、きっとあなたに最適なプランが見つかります。
+           本セミナーでは、ツールを使ったパフォーマンス計測の方法や、高速化するために行っている工夫、利用しているライブラリなど、
+           社内で行っている取り組みについてご紹介します。
         </p>
-        <small class="text-muted">お申込後、弊社よりメールにて説明会日程調整のご案内をさせて頂きます。</small>
+        <p>■スピーカー</p>
+        <div class="row">
+          <div class="col-2"><%= image_tag("/assets/test.png", alt: "speaker logo", width: "100px") %></div>
+          <div class="col-10">
+            <p>テスト　太郎<br />
+            株式会社△△ リードエンジニア</p>
+            <p>2010年に株式会社△△に入社。サーバサイドのパフォーマンス改善などの経験を積み、現在はリードエンジニアとして開発全般の技術責任者を務める。</p>
+          </div>
+        </div>
       </div>
-      <div class="col-6 bg-light">
+      <div class="col-4 bg-light">
         <%= form_with(model: @inquire) do |f| %>
           <div id="errors"></div>
 
@@ -33,11 +44,12 @@
           <div class="form-group form-check">
             <%= f.check_box :agreement, { class: " form-check-input" }, "1", nil %>
             <%= f.label :agreement, "「個人情報の取扱について」に同意する。", class: "form-check-label" %>
-            <small>(<%= link_to "個人情報の取扱について", "#" %>)</small>
+            <p><small>(<%= link_to "個人情報の取扱について", "#" %>)</small></p>
+            <p><small class="text-muted">※お申込後、メールにて視聴URLをご案内致します。</small></p>
           </div>
 
           <div class="d-flex justify-content-center">
-          <%= f.submit "無料体験", class: "btn btn-primary btn-lg w-50" %>
+          <%= f.submit "イベントに申し込む", class: "btn btn-primary btn-lg w-75" %>
           </div>
         <% end %>
       </div>
