@@ -1,5 +1,3 @@
-require 'sidekiq-scheduler'
-
 class EmailSenderJob < ApplicationJob
   queue_as :default
 
@@ -8,8 +6,10 @@ class EmailSenderJob < ApplicationJob
     response = sqs_receiver.receive_messages
 
     response.messages.each do |message|
-      inquirer = Inquiry.find_by(id: message.message_attributes['inquiry_id']['string_value'])
-      InquiryMailer.inquiry(inquirer, message.message_attributes['email_subject']['string_value']).deliver_now
+      parsed_body = JSON.parse(message.body)
+      parsed_message = JSON.parse(parsed_body['Message'])
+      inquirer = Inquiry.find_by(id: parsed_message['inquiry_id'])
+      InquiryMailer.inquiry(inquirer, parsed_message['email_subject']).deliver_now
     end
 
     sqs_receiver.delete_messages(response)
