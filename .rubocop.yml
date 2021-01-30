@@ -1,0 +1,21 @@
+require: rubocop-rails
+
+AllCops:
+  TargetRubyVersion: 2.7
+  NewCops: enable
+  Exclude:
+    - bin/*
+    - config.ru
+    - config/**/*
+    - db/**/*
+    - Gemfile
+    - node_modules/**/*
+    - Rakefile
+    - test/**/*
+    - vendor/**/*
+
+Documentation:
+  Enabled: false
+
+Layout/LineLength:
+  Max: 125
