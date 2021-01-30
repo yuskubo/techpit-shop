@@ -6,16 +6,12 @@ class InquiriesController < ApplicationController
   def create
     @inquire = Inquiry.new(inquiry_params)
     if @inquire.save
-      body = 'Inquiry EMail'
-      attributes = {
-        inquiry_id: { string_value: @inquire.id.to_s, data_type: 'Number' },
-        email_subject: { string_value: '無料体験レッスンの日程のお知らせ', data_type: 'String' }
-      }
+      body = { inquiry_id: @inquire.id.to_s, email_subject: '無料体験レッスンの日程のお知らせ' }.to_json
       group_id = 'inquiry_email'
-      sqs_sender = AwsClients::SqsSender.new('ap-northeast-1', Rails.application.credentials.queue_url, body, attributes, group_id)
-      sqs_sender.send_message
+      sns_sender = AwsClients::SnsPublisher.new('ap-northeast-1', Rails.application.credentials.sns_topic_arn, body, group_id)
+      sns_sender.publish_message
 
-      redirect_to inquiries_complete_url
+      redirect_to inquiries_complete_url(hoge: 'test')
     end
   end
 
