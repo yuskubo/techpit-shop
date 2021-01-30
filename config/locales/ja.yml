@@ -16,6 +16,6 @@ ja:
               blank: を入力してください
             email:
               blank: を入力してください
-              invalid: メールアドレスの形式が不正です
+              invalid: の形式が不正です
             agreement:
               accepted: に同意が必要です
