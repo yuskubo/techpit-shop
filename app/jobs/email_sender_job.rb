@@ -8,8 +8,8 @@ class EmailSenderJob < ApplicationJob
     response.messages.each do |message|
       parsed_body = JSON.parse(message.body)
       parsed_message = JSON.parse(parsed_body['Message'])
-      inquirer = Inquiry.find_by(id: parsed_message['inquiry_id'])
-      InquiryMailer.inquiry(inquirer, parsed_message['email_subject']).deliver_now
+      registration = Registration.find_by(id: parsed_message['registration_id'])
+      RegistrationMailer.registration(registration, parsed_message['email_subject']).deliver_now
     end
 
     sqs_receiver.delete_messages(response)

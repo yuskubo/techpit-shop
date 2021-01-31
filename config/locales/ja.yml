@@ -1,14 +1,14 @@
 ja:
   activerecord:
     attributes:
-      inquiry:
+      registration:
         first_name: 名
         last_name: 姓
         email: メールアドレス
         agreement: 個人情報の取扱
     errors:
       models:
-        inquiry:
+        registration:
           attributes:
             first_name:
               blank: を入力してください
