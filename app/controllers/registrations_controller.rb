@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class RegistrationsController < ApplicationController
+  EMAIL_SUBJECT = '【お申し込み完了】イベントへのお申し込みありがとうございました'
+
   def new
     @registration = Registration.new
   end
@@ -9,7 +11,7 @@ class RegistrationsController < ApplicationController
     @registration = Registration.new(registration_params)
     return unless @registration.save
 
-    body = { registration_id: @registration.id.to_s, email_subject: '無料体験レッスンの日程のお知らせ' }.to_json
+    body = { registration_id: @registration.id.to_s, email_subject: EMAIL_SUBJECT }.to_json
     region = 'ap-northeast-1'
     group_id = 'registration_email'
     sns_sender = AwsClients::SnsPublisher.new(region, Rails.application.credentials.sns_topic_arn, body, group_id)
