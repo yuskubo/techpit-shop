@@ -2,11 +2,10 @@
 
 module AwsClients
   class SnsPublisher
-    def initialize(region, topic_arn, message, attributes, group_id)
+    def initialize(region, topic_arn, message, group_id)
       @sns = Aws::SNS::Client.new(region: region)
       @topic_arn = topic_arn
       @message = message
-      @attributes = attributes
       @group_id = group_id
     end
 
@@ -15,7 +14,6 @@ module AwsClients
         {
           topic_arn: @topic_arn,
           message: @message,
-          message_attributes: @attributes,
           message_deduplication_id: SecureRandom.uuid,
           message_group_id: @group_id
         }
