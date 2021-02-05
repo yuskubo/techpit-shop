@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module AwsClients
   class SqsReceiver
     def initialize(region, queue_url, max_number:)
@@ -7,20 +9,19 @@ module AwsClients
     end
 
     def receive_messages
-      response = @sqs.receive_message({
-        queue_url: @queue_url,
-        message_attribute_names: ['All'],
-        max_number_of_messages: @max_number,
-        wait_time_seconds: 0
-      })
+      @sqs.receive_message(
+        {
+          queue_url: @queue_url,
+          message_attribute_names: ['All'],
+          max_number_of_messages: @max_number,
+          wait_time_seconds: 0
+        }
+      )
     end
 
     def delete_messages(response)
       response.messages.each do |message|
-        @sqs.delete_message({
-          queue_url: @queue_url,
-          receipt_handle: message.receipt_handle
-        })
+        @sqs.delete_message({ queue_url: @queue_url, receipt_handle: message.receipt_handle })
       end
     end
   end
