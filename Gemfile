@@ -8,6 +8,7 @@ gem 'aws-sdk-rails'
 gem 'aws-sdk-sns'
 gem 'bootsnap', require: false
 gem 'puma'
+gem 'rails-i18n'
 gem 'redis'
 gem 'sass-rails'
 gem 'sidekiq'
@@ -19,10 +20,12 @@ gem 'webpacker'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'faker'
   gem 'pry-byebug'
 end
 
 group :development do
+  gem 'bullet'
   gem 'listen'
   gem 'rubocop-rails', require: false
   gem 'spring'

@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-  get 'registrations/new'
-  get 'registrations/create'
-  root to: redirect('registrations/new')
+  root to: redirect('events')
 
-  controller :registrations do
-    resources :registrations, only: [:new, :create]
-    get 'registrations/complete', action: 'complete'
+  resources :registrations, only: [:create]
+  get 'registrations/complete', to: 'registrations#complete'
+
+  resources :events, only: [:index, :show] do
+    resources :registrations, only: [:create]
   end
 
   if Rails.env.development?

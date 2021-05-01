@@ -3,10 +3,6 @@
 class RegistrationsController < ApplicationController
   EMAIL_SUBJECT = '【お申し込み完了】イベントへのお申し込みありがとうございました'
 
-  def new
-    @registration = Registration.new
-  end
-
   def create
     @registration = Registration.new(registration_params)
     return unless @registration.save
@@ -17,7 +13,7 @@ class RegistrationsController < ApplicationController
     sns_sender = AwsClients::SnsPublisher.new(region, Rails.application.credentials.sns_topic_arn, body, group_id)
     sns_sender.publish_message
 
-    redirect_to registrations_complete_url
+    redirect_to events_url
   end
 
   def complete; end
@@ -25,6 +21,6 @@ class RegistrationsController < ApplicationController
   private
 
   def registration_params
-    params.require(:registration).permit(:first_name, :last_name, :email, :agreement)
+    params.require(:registration).permit(:first_name, :last_name, :email, :agreement).merge(event_id: params[:event_id])
   end
 end
