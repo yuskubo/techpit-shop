@@ -14,7 +14,7 @@ AllCops:
     - test/**/*
     - vendor/**/*
 
-Documentation:
+Style/Documentation:
   Enabled: false
 
 Layout/LineLength:
