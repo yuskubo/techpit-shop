@@ -15,8 +15,8 @@
         <div class="row">
           <div class="col-3"><%= image_tag("/assets/speaker-default-photo.jpg", alt: "スピーカーの顔写真", class: "speaker-photo img-fluid") %></div>
           <div class="col-9">
-            <p><%= "#{@event.speaker.first_name} #{@event.speaker.last_name}" %></p>
-            <p><%= @event.speaker.company %></p>
+            <%= "#{@event.speaker.first_name} #{@event.speaker.last_name}" %><br>
+            <%= @event.speaker.company %>
             <p><%= simple_format(@event.speaker.profile) %></p>
           </div>
         </div>
