@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2021_05_01_055457) do
   create_table "events", force: :cascade do |t|
     t.integer "speaker_id", null: false
     t.string "title", null: false
-    t.string "thema", null: false
+    t.string "sub_title", null: false
     t.text "content", null: false
     t.datetime "start_at", null: false
     t.datetime "end_at", null: false

@@ -9,20 +9,20 @@
     </h3>
     <div class="row">
       <div class="col-8">
-        <h4><%= @event.thema %></h4>
-        <p><%= @event.content %></p>
+        <h4><%= @event.sub_title %></h4>
+        <%= simple_format(@event.content) %>
         <p>■スピーカー</p>
         <div class="row">
           <div class="col-3"><%= image_tag("/assets/speaker-default-photo.jpg", alt: "スピーカーの顔写真", class: "speaker-photo img-fluid") %></div>
           <div class="col-9">
             <p><%= "#{@event.speaker.first_name} #{@event.speaker.last_name}" %></p>
             <p><%= @event.speaker.company %></p>
-            <p><%= @event.speaker.profile %></p>
+            <p><%= simple_format(@event.speaker.profile) %></p>
           </div>
         </div>
       </div>
       <div class="col-4 bg-light form-area">
-        <%= form_with(model: @event.registration.create, url: event_registrations_path(@event)) do |f| %>
+        <%= form_with(model: @event.registrations.new, url: event_registrations_path(@event)) do |f| %>
           <div id="errors"></div>
 
           <div class="form-group">

@@ -2,5 +2,5 @@
 
 class Event < ApplicationRecord
   belongs_to :speaker
-  has_many :registration, dependent: :destroy
+  has_many :registrations, dependent: :destroy
 end
