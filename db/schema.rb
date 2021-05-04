@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2021_05_01_055457) do
     t.string "email", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["email"], name: "index_registrations_on_email", unique: true
+    t.index ["event_id", "email"], name: "index_registrations_on_event_id_and_email", unique: true
     t.index ["event_id"], name: "index_registrations_on_event_id"
   end
 

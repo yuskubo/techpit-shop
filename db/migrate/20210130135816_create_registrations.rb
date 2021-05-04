@@ -9,6 +9,6 @@ class CreateRegistrations < ActiveRecord::Migration[6.0]
       t.timestamps
     end
 
-    add_index :registrations, :email, unique: true
+    add_index :registrations, %i[event_id email], unique: true
   end
 end

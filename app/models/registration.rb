@@ -7,7 +7,7 @@ class Registration < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :last_name, presence: true, length: { maximum: 50 }
   validates :first_name, presence: true, length: { maximum: 50 }
-  validates :email, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: { scope: :event_id }
   validates :email, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, allow_blank: true
   validates :agreement, acceptance: true, allow_nil: false, on: :create
 
